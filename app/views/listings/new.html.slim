@@ -1,0 +1,30 @@
+= form_for @listing do |f|
+  .card.col.p-3.text-center
+    = image_tag @listing.medium_url, class: 'card-img-top'
+    .card-body
+      h6.card-title = @listing.name
+      ul.list-group.list-group-flush
+        li.list-group-item
+          .row
+            .col UID:
+            .col = @listing.uid
+        li.list-group-item
+          .row
+            .col Market:
+            .col = @listing.market_address
+        li.list-group-item
+          .row
+            .col Price:
+            .col = @listing.price_formatted
+      = f.hidden_field :entire_url
+      = f.hidden_field :uid
+      = f.hidden_field :name
+      = f.hidden_field :medium_url
+      = f.hidden_field :market
+      = f.hidden_field :price_formatted
+      = f.hidden_field :city
+      = f.hidden_field :country
+      = f.hidden_field :state
+      .form-row
+        = f.submit 'Save', class: 'btn btn-primary form-control'
+        = link_to 'Return to Listings', listings_path, class: 'btn btn-secondary form-control'

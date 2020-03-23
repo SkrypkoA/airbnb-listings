@@ -1,0 +1,32 @@
+.masthead.text-white.text-center
+  .overlay.
+  .container
+    .row
+      .col-xl-9.mx-auto.rounded
+        h1.mb-5 Input link to listing here:
+      .col-md-10.col-lg-8.col-xl-7.mx-auto
+        = form_tag new_listing_path, method: :get
+          .form-row
+            .col-12.col-md-9.mb-2.mb-md-0
+              = text_field_tag :url, '', class: 'form-control form-control-lg', placeholder: 'https://www.airbnb.com/rooms/28911341'
+            .col-12.col-md-3
+              = submit_tag 'Go!', class: 'btn btn-block btn-lg btn-primary'
+br
+- @listings.each do |listing|
+  .card.col-4.p-2
+    = image_tag listing.medium_url, class: 'card-img-top'
+    .card-body
+      h6.card-title = listing.name
+      ul.list-group.list-group-flush
+        li.list-group-item
+          .row
+            .col UID:
+            .col = listing.uid
+        li.list-group-item
+          .row
+            .col Market:
+            .col = listing.market_address
+        li.list-group-item
+          .row
+              .col Price:
+              .col = listing.price_formatted

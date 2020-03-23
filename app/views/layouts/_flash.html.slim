@@ -1,0 +1,7 @@
+- flash.each do |type, message|
+    - if type == 'danger'
+      .alert.alert-danger
+        = message
+    - else
+      .alert.alert-success
+        = message
